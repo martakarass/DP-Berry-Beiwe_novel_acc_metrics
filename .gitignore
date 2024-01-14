@@ -1,0 +1,18 @@
+
+# files
+.DS_Store
+.Rhistory
+results*
+DP-Berry-Beiwe_novel_acc_metrics.Rproj
+Icon*
+
+# dirs
+/.Rproj.user*/
+/data*/
+/doc*/
+/manuscript*/
+/results*/
+/Rmd*/
+
+**/_OLD*/
+.Rproj.user
