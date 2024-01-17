@@ -17,7 +17,6 @@ study_sample_df_path <- file.path(here(), 'data_participants_other_processed', '
 study_sample_df <- fread(study_sample_df_path) %>% as.data.frame()
 dim(study_sample_df)
 
-
 # ------------------------------------------------------------------------------
 # read participants characteristics
 # ------------------------------------------------------------------------------
@@ -283,5 +282,22 @@ tbl_out
 
 tbl_out_path <- file.path(here(), 'results_tables', "table_1.csv")
 fwrite(tbl_out, tbl_out_path)
+
+
+# ------------------------------------------------------------------------------
+# save to file: table 1 part, unaggregated
+# ------------------------------------------------------------------------------
+
+comb_df_ext = 
+  comb_df %>% 
+  inner_join(study_sample_df %>% select(subj_id, beiwe_id)) %>%
+  select(subj_id, beiwe_id, everything())
+dim(comb_df_ext)
+
+tbl_out_path <- file.path(here(), 'results_tables', "table_1_part_unaggregated.csv")
+fwrite(comb_df_ext, tbl_out_path)
+
+
+
 
 

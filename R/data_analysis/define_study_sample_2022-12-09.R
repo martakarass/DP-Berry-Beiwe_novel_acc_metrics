@@ -74,6 +74,9 @@ beiwe_id_sample2 <-
 
 beiwe_id_sample_F <- beiwe_id_sample2
 
+length(unique(beiwe_id_sample_F$subj_id))
+length(unique(beiwe_id_sample_F$beiwe_id))
+
 tmp_path <- file.path(here(), "data_participants_other_processed", "study_analysis_sample.csv")
 fwrite(beiwe_id_sample_F, tmp_path)
 
@@ -160,6 +163,9 @@ measures_df5 <-
 
 measures_df_F <- measures_df5
 
+length(unique(measures_df_F$subj_id))
+length(unique(measures_df_F$beiwe_id))
+
 # save to file
 measures_proc_df_path <- file.path(here(), "data_actigraph_processed", "accelerometer", "ALS_forearm_daily_proc.csv")
 fwrite(measures_df_F, measures_proc_df_path)
@@ -174,6 +180,10 @@ alsfrsrse_tojoin <-
   alsfrsrse %>% 
   rename(survey_local_time_date = local_time_date) %>%
   filter(subj_id %in% beiwe_id_sample_F$subj_id) 
+
+length(unique(alsfrsrse_tojoin$subj_id))
+length(unique(alsfrsrse_tojoin$beiwe_id))
+
 
 dat_comb <- 
   measures_df_F %>% 
@@ -202,8 +212,9 @@ dat_comb <-
 #   frs_sub_4_5_6_7 = frs4 + frs5 + frs6 + frs7
 # )
 dim(dat_comb)
+
 length(unique(dat_comb$subj_id))
-dat_comb %>% count(subj_id)
+length(unique(dat_comb$beiwe_id))
 
 dat_comb_F <- dat_comb
 

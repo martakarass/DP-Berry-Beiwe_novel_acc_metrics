@@ -27,7 +27,6 @@ smart_wearables_start_end <-
   select(-c(beiwe_id, wearable_type))
 
 
-
 #------------------------------------------------------------------------------
 # read surveys responses
 # ------------------------------------------------------------------------------
@@ -174,6 +173,7 @@ wearables_compliance_df <-
   group_by(subj_id, obs_duration) %>%
   summarise(valid_day = sum(valid_day)) %>%
   ungroup()
+length(unique(wearables_compliance_df$subj_id))
 
 
 wearables_compliance_daysinobsperiod <- 
